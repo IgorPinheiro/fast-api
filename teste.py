@@ -5,12 +5,15 @@ from typing import Optional
 # Create an APP
 app = FastAPI()
 
-# list with an tuple
-users = [(1, 'Joao', 'minha_Senha'),(2, 'Carlos', 'minha _enha'),(3, 'Andreia', 'My_pass')]
+# Object User to integration with pydantci.
+class User(BaseModel):
+    id: int
+    name: str
+    password: str
 
 @app.post('/user')
-def main(name):
-    return {'name': name}
+def main(user: User):
+    return user
 
 
 
